@@ -4,7 +4,9 @@
 
 This project focuses on transforming data analysis findings into clear, accurate, and meaningful visualisations. As part of Project 4 of the DecodeLabs Data Analytics Internship, the objective is to move beyond discovering patterns and learn how to communicate insights effectively through data visualisation and storytelling.
 
-Using the cleaned dataset prepared during Projects 1 and 2, this project will explore business questions, select appropriate charts, compare trends, investigate relationships, and present findings in a way that supports informed decision-making.
+Using the cleaned dataset prepared during Projects 1 and 2, this project explores business questions, selects appropriate charts, compares trends, investigates relationships, and presents findings in a way that supports informed decision-making.
+
+The project includes two interactive dashboard implementations: **Microsoft Power BI** and **Python Streamlit**. Both dashboards use the same cleaned Excel dataset and aim to present consistent metrics and interactive visualisations.
 
 ## Project Objectives
 
@@ -14,6 +16,7 @@ Using the cleaned dataset prepared during Projects 1 and 2, this project will ex
 - Explore relationships between variables and the composition of totals.
 - Maintain chart integrity by using appropriate scales and avoiding misleading representations.
 - Develop the foundation for communicating analytical findings through data storytelling.
+- Build interactive dashboards in Power BI and Python Streamlit.
 
 ## Project Scope
 
@@ -28,6 +31,8 @@ This section focuses on understanding the analytical question and choosing an ap
 3. **Comparisons and Trends** — Visualise differences between categories and changes over time.
 4. **Relationships and Composition** — Investigate relationships between variables and understand how totals are distributed.
 5. **Chart Integrity** — Use honest axes and appropriate scales while avoiding misleading visual representations.
+
+**Current implementation:** The initial Power BI report includes KPI cards for unique orders, recorded sales, total quantity, and average recorded value per order. It also includes a product-sales bar chart and interactive slicers for product, order status, and date. A sales trend line chart has been added, but its date grouping still needs to be refined to show monthly values. The Python Streamlit dashboard includes corresponding KPI metrics, interactive filters, and a product-sales bar chart.
 
 ### Part 2 — Design with Precision
 
@@ -59,15 +64,24 @@ _Planned topics:_
 
 ## Dataset
 
-The project will use the cleaned dataset produced during the earlier data analytics projects. The dataset will be inspected to understand its columns, data types, available measures, and suitability for the planned business questions.
+The project uses `dataset/cleaned_dataset.xlsx`, the cleaned dataset prepared during the earlier data analytics projects. It contains 1,200 records and 14 columns covering retail transactions, including order dates, products, quantities, prices, payment methods, and order statuses.
 
-The analysis and visualisations will be based on the information available in the dataset. Any limitations affecting comparisons, trends, or conclusions will be acknowledged.
+The dataset supports analysis of recorded sales, order counts, product performance, and trends over time. The dashboards use the same dataset to maintain consistency between Power BI and Python Streamlit.
+
+Recorded sales include all order statuses and should not automatically be interpreted as completed revenue or profit. The available dates range from 1 January 2023 to 30 June 2025; therefore, 2025 represents a partial year and should not be compared directly with the full years 2023 and 2024.
+
+The analysis and visualisations are based on the information available in the dataset. Any limitations affecting comparisons, trends, or conclusions will be acknowledged.
 
 ## Tools and Technologies
 
-- Microsoft Excel
-- Data visualisation and charting techniques
-- Data analysis and storytelling principles
+- Microsoft Excel — cleaned dataset.
+- Microsoft Power BI Desktop — interactive dashboard and visualisation.
+- Python — data processing and dashboard development.
+- Pandas — data loading and filtering.
+- Plotly — interactive charts.
+- Streamlit — Python dashboard interface.
+- Git and GitHub — version control and project documentation.
+- Data analysis and storytelling principles.
 
 ## Expected Outcomes
 
@@ -78,13 +92,16 @@ By completing this project, I aim to:
 - Present comparisons, trends, relationships, and composition clearly.
 - Avoid misleading charts and improve the accuracy of visual communication.
 - Communicate key findings through concise explanations and insight-focused titles.
-- Build a foundation for presenting data-driven recommendations to stakeholders.
+- Build interactive dashboards in Power BI and Python Streamlit.
+- Communicate data-driven recommendations to stakeholders.
 
 ## Project Status
 
 - [ ] Part 1 — Choose the Right Visual
 - [ ] Part 2 — Design with Precision
 - [ ] Part 3 — Tell a Data Story
+
+**Current progress:** Initial Power BI and Python Streamlit dashboards have been created. KPI cards, product-sales visualisation, and interactive filters are implemented. The monthly sales trend and further visual refinements remain in progress.
 
 ## Internship
 
