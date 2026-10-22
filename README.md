@@ -32,7 +32,7 @@ This section focuses on understanding the analytical question and choosing an ap
 4. **Relationships and Composition** — Investigate relationships between variables and understand how totals are distributed.
 5. **Chart Integrity** — Use honest axes and appropriate scales while avoiding misleading visual representations.
 
-**Current implementation:** The initial Power BI report includes KPI cards for unique orders, recorded sales, total quantity, and average recorded value per order. It also includes a product-sales bar chart and interactive slicers for product, order status, and date. A sales trend line chart has been added, but its date grouping still needs to be refined to show monthly values. The Python Streamlit dashboard includes corresponding KPI metrics, interactive filters, and a product-sales bar chart.
+**Current implementation:** The Power BI report includes KPI cards for unique orders, recorded sales, total quantity, and average recorded value per order. It also includes bar charts comparing recorded sales by product, order status, and payment method, along with a monthly recorded sales trend covering January 2023 to June 2025. Interactive slicers allow filtering by product, order status, and date. The Python Streamlit dashboard includes corresponding KPI metrics, interactive filters, and a product-sales bar chart. Further visual refinement and dashboard development remain in progress.
 
 ### Part 2 — Design with Precision
 
@@ -101,7 +101,7 @@ By completing this project, I aim to:
 - [ ] Part 2 — Design with Precision
 - [ ] Part 3 — Tell a Data Story
 
-**Current progress:** Initial Power BI and Python Streamlit dashboards have been created. KPI cards, product-sales visualisation, and interactive filters are implemented. The monthly sales trend and further visual refinements remain in progress.
+**Current progress:** Initial Power BI and Python Streamlit dashboards have been created. The Power BI report includes four KPI cards, product-sales, order-status, and payment-method comparisons, a monthly sales trend, and interactive filters. The Python Streamlit dashboard includes KPI metrics, interactive filters, and a product-sales bar chart. Further layout refinements and additional visualisations remain in progress.
 
 ## Internship
 
