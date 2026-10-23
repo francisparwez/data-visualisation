@@ -343,6 +343,65 @@ else:
     )
 
     st.plotly_chart(fig, width="stretch")
+    
+
+# --------------------------------------------------
+# Key findings and business insights
+# --------------------------------------------------
+
+st.subheader("Key Findings")
+
+if filtered_df.empty:
+    st.info("No findings available for the selected filters.")
+else:
+    product_sales = (
+        filtered_df.groupby("Product")["TotalPrice"]
+        .sum()
+        .sort_values(ascending=False)
+    )
+
+    payment_sales = (
+        filtered_df.groupby("PaymentMethod")["TotalPrice"]
+        .sum()
+        .sort_values(ascending=False)
+    )
+
+    highest_product = product_sales.index[0]
+    highest_product_sales = product_sales.iloc[0]
+
+    highest_payment = payment_sales.index[0]
+    highest_payment_sales = payment_sales.iloc[0]
+
+    insight_col1, insight_col2 = st.columns(2)
+
+    with insight_col1:
+        st.markdown("**Top Product by Recorded Sales**")
+        st.write(
+            f"{highest_product} has the highest recorded sales "
+            f"at {highest_product_sales:,.2f}."
+        )
+
+    with insight_col2:
+        st.markdown("**Top Payment Method by Recorded Sales**")
+        st.write(
+            f"{highest_payment} has the highest recorded sales "
+            f"at {highest_payment_sales:,.2f}."
+        )
+        
+    st.markdown("**Year-over-Year Sales Comparison**")
+    st.write(
+        "The grouped bar chart compares recorded sales for each month "
+        "across 2023, 2024 and 2025. The dataset covers January to June "
+        "2025 only, so those months should be compared with the same "
+        "months in earlier years. July to December 2025 are not available."
+    )
+
+    st.caption(
+        "These findings reflect the current filters and recorded sales "
+        "across the selected order statuses. They do not represent "
+        "profit or confirmed completed revenue."
+    )
+
 
 # --------------------------------------------------
 # Preview filtered data
