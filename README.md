@@ -32,7 +32,9 @@ This section focuses on understanding the analytical question and choosing an ap
 4. **Relationships and Composition** — Investigate relationships between variables and understand how totals are distributed.
 5. **Chart Integrity** — Use honest axes and appropriate scales while avoiding misleading visual representations.
 
-**Current implementation:** The Power BI report includes KPI cards for unique orders, recorded sales, total quantity, and average recorded value per order. It also includes bar charts comparing recorded sales by product, order status, and payment method, along with a monthly recorded sales trend covering January 2023 to June 2025. Interactive slicers allow filtering by product, order status, and date. The Python Streamlit dashboard includes corresponding KPI metrics, interactive filters, and a product-sales bar chart. Further visual refinement and dashboard development remain in progress.
+**Current implementation:** The Power BI report includes KPI cards for unique orders, recorded sales, total quantity, and average recorded value per order. It also includes bar charts comparing recorded sales by product, order status, and payment method, a monthly recorded sales trend covering January 2023 to June 2025, and interactive slicers for product, order status, and date.
+
+The Python Streamlit dashboard includes corresponding KPI metrics, interactive filters, and visualisations for recorded sales by product, monthly recorded sales trends, order status, and payment method. A grouped bar chart compares monthly recorded sales across years, with months on the x-axis and separate bars for each year. The dashboard also provides a filtered dataset preview. Both implementations support interactive exploration of the cleaned dataset, with further visual refinement and data storytelling remaining in progress.
 
 ### Part 2 — Design with Precision
 
@@ -66,9 +68,9 @@ _Planned topics:_
 
 The project uses `dataset/cleaned_dataset.xlsx`, the cleaned dataset prepared during the earlier data analytics projects. It contains 1,200 records and 14 columns covering retail transactions, including order dates, products, quantities, prices, payment methods, and order statuses.
 
-The dataset supports analysis of recorded sales, order counts, product performance, and trends over time. The dashboards use the same dataset to maintain consistency between Power BI and Python Streamlit.
+The dataset supports analysis of recorded sales, order counts, product performance, and trends over time. Both dashboards use the same dataset to maintain consistency between Power BI and Python Streamlit.
 
-Recorded sales include all order statuses and should not automatically be interpreted as completed revenue or profit. The available dates range from 1 January 2023 to 30 June 2025; therefore, 2025 represents a partial year and should not be compared directly with the full years 2023 and 2024.
+Recorded sales include all order statuses and should not automatically be interpreted as completed revenue or profit. The available dates range from 1 January 2023 to 30 June 2025; therefore, 2025 represents a partial year and should not be compared directly with the full years 2023 and 2024. The year-over-year monthly comparison displays the available monthly values for each year, so months without data for a particular year should not be interpreted as having zero sales.
 
 The analysis and visualisations are based on the information available in the dataset. Any limitations affecting comparisons, trends, or conclusions will be acknowledged.
 
@@ -77,9 +79,9 @@ The analysis and visualisations are based on the information available in the da
 - Microsoft Excel — cleaned dataset.
 - Microsoft Power BI Desktop — interactive dashboard and visualisation.
 - Python — data processing and dashboard development.
-- Pandas — data loading and filtering.
-- Plotly — interactive charts.
-- Streamlit — Python dashboard interface.
+- Pandas — data loading, date handling, grouping, aggregation, and filtering.
+- Plotly — interactive bar charts, line charts, and grouped bar charts.
+- Streamlit — Python dashboard interface, KPI metrics, and interactive filters.
 - Git and GitHub — version control and project documentation.
 - Data analysis and storytelling principles.
 
@@ -101,7 +103,7 @@ By completing this project, I aim to:
 - [ ] Part 2 — Design with Precision
 - [ ] Part 3 — Tell a Data Story
 
-**Current progress:** Initial Power BI and Python Streamlit dashboards have been created. The Power BI report includes four KPI cards, product-sales, order-status, and payment-method comparisons, a monthly sales trend, and interactive filters. The Python Streamlit dashboard includes KPI metrics, interactive filters, and a product-sales bar chart. Further layout refinements and additional visualisations remain in progress.
+**Current progress:** Initial Power BI and Python Streamlit dashboards have been created. The Power BI report includes four KPI cards, product-sales, order-status, and payment-method comparisons, a monthly recorded sales trend, and interactive filters. The Python Streamlit dashboard includes KPI metrics, product and order-status filters, a date-range filter, and charts for recorded sales by product, monthly recorded sales trends, order status, and payment method. A grouped bar chart has also been added to compare monthly recorded sales by year, allowing users to examine differences between corresponding months. The dashboard includes a preview of the filtered dataset. Further layout refinements and data storytelling remain in progress.
 
 ## Internship
 
