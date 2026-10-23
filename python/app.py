@@ -176,12 +176,178 @@ else:
         showlegend=False,
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
+    
+    # --------------------------------------------------
+# Monthly recorded sales trend
+# --------------------------------------------------
+
+st.subheader("Monthly Recorded Sales Trend")
+
+if filtered_df.empty:
+    st.info("No records available for the selected filters.")
+else:
+    monthly_sales = (
+        filtered_df
+        .set_index("Date")
+        .resample("MS")["TotalPrice"]
+        .sum()
+        .reset_index()
+    )
+
+    fig = px.line(
+        monthly_sales,
+        x="Date",
+        y="TotalPrice",
+        title="Monthly Recorded Sales Over Time",
+        labels={
+            "Date": "Month",
+            "TotalPrice": "Recorded Sales",
+        },
+        markers=True,
+    )
+
+    fig.update_layout(
+        xaxis_title="Month",
+        yaxis_title="Recorded Sales",
+        showlegend=False,
+    )
+
+    st.plotly_chart(fig, width="stretch")
+    
+    
+# --------------------------------------------------
+# Recorded sales by order status
+# --------------------------------------------------
+
+st.subheader("Recorded Sales by Order Status")
+
+if filtered_df.empty:
+    st.info("No records available for the selected filters.")
+else:
+    status_sales = (
+        filtered_df.groupby("OrderStatus", as_index=False)["TotalPrice"]
+        .sum()
+        .sort_values("TotalPrice", ascending=False)
+    )
+
+    fig = px.bar(
+        status_sales,
+        x="OrderStatus",
+        y="TotalPrice",
+        title="Recorded Sales by Order Status",
+        labels={
+            "OrderStatus": "Order Status",
+            "TotalPrice": "Recorded Sales",
+        },
+        text_auto=".2s",
+    )
+
+    fig.update_layout(
+        xaxis_title="Order Status",
+        yaxis_title="Recorded Sales",
+        showlegend=False,
+    )
+
+    st.plotly_chart(fig, width="stretch")
+    
+
+# --------------------------------------------------
+# Recorded sales by payment method
+# --------------------------------------------------
+
+st.subheader("Recorded Sales by Payment Method")
+
+if filtered_df.empty:
+    st.info("No records available for the selected filters.")
+else:
+    payment_sales = (
+        filtered_df.groupby("PaymentMethod", as_index=False)["TotalPrice"]
+        .sum()
+        .sort_values("TotalPrice", ascending=False)
+    )
+
+    fig = px.bar(
+        payment_sales,
+        x="PaymentMethod",
+        y="TotalPrice",
+        title="Recorded Sales by Payment Method",
+        labels={
+            "PaymentMethod": "Payment Method",
+            "TotalPrice": "Recorded Sales",
+        },
+        text_auto=".2s",
+    )
+
+    fig.update_layout(
+        xaxis_title="Payment Method",
+        yaxis_title="Recorded Sales",
+        showlegend=False,
+    )
+
+    st.plotly_chart(fig, width="stretch")
+
+
+# --------------------------------------------------
+# Year-over-year monthly recorded sales comparison
+# --------------------------------------------------
+
+st.subheader("Year-over-Year Monthly Sales Comparison")
+
+if filtered_df.empty:
+    st.info("No records available for the selected filters.")
+else:
+    yearly_monthly_sales = (
+        filtered_df
+        .dropna(subset=["Date", "TotalPrice"])
+        .assign(
+            Year=filtered_df["Date"].dt.year.astype(str),
+            Month=filtered_df["Date"].dt.month,
+        )
+        .groupby(["Month", "Year"], as_index=False)["TotalPrice"]
+        .sum()
+    )
+
+    yearly_monthly_sales["MonthName"] = (
+        pd.to_datetime(
+            yearly_monthly_sales["Month"],
+            format="%m",
+        ).dt.strftime("%b")
+    )
+
+    fig = px.bar(
+        yearly_monthly_sales,
+        x="MonthName",
+        y="TotalPrice",
+        color="Year",
+        barmode="group",
+        category_orders={
+            "MonthName": [
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+            ],
+            "Year": ["2023", "2024", "2025"],
+        },
+        title="Monthly Recorded Sales Comparison by Year",
+        labels={
+            "MonthName": "Month",
+            "TotalPrice": "Recorded Sales",
+            "Year": "Year",
+        },
+    )
+
+    fig.update_layout(
+        xaxis_title="Month",
+        yaxis_title="Recorded Sales",
+        legend_title="Year",
+    )
+
+    st.plotly_chart(fig, width="stretch")
 
 # --------------------------------------------------
 # Preview filtered data
 # --------------------------------------------------
 with st.expander("View filtered dataset"):
-    st.dataframe(filtered_df, use_container_width=True)
+    st.dataframe(filtered_df, width="stretch")
 
 st.caption("Project 4 | Data Visualization and Storytelling")
