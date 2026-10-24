@@ -32,39 +32,43 @@ This section focuses on understanding the analytical question and choosing an ap
 4. **Relationships and Composition** — Investigate relationships between variables and understand how totals are distributed.
 5. **Chart Integrity** — Use honest axes and appropriate scales while avoiding misleading visual representations.
 
-**Current implementation:** The Power BI report includes KPI cards for unique orders, recorded sales, total quantity, and average recorded value per order. It also includes bar charts comparing recorded sales by product, order status, and payment method, a monthly recorded sales trend covering January 2023 to June 2025, and interactive slicers for product, order status, and date.
+**Implementation:** The Power BI report includes KPI cards for unique orders, recorded sales, total quantity, and average recorded value per order. It also includes bar charts comparing recorded sales by product, order status, and payment method, a monthly recorded sales trend covering January 2023 to June 2025, and interactive slicers for product, order status, and date.
 
-The Python Streamlit dashboard includes corresponding KPI metrics, interactive product, order-status, and date-range filters, and visualisations for recorded sales by product, monthly recorded sales trends, order status, and payment method. A grouped bar chart compares monthly recorded sales across 2023, 2024, and 2025, with months on the x-axis and separate bars for each available year. The product and payment-method chart subtitles identify the current leading category, while the Key Findings section dynamically highlights the top product and payment method by recorded sales under the selected filters and explains the year-over-year comparison. The dashboard also provides a filtered dataset preview. The filters have been checked in both Power BI and Streamlit, and the Streamlit charts use consistent sizing, margins, and typography. These implementations demonstrate category comparisons, a time-series line chart, interactive filtering, and an available-data comparison. Part 1 is complete for the current dashboard implementation; the remaining design and storytelling work in Parts 2 and 3 is still in progress.
+The Python Streamlit dashboard includes corresponding KPI metrics, interactive product, order-status, and date-range filters, and visualisations for recorded sales by product, monthly recorded sales trends, order status, and payment method. A grouped bar chart compares monthly recorded sales across 2023, 2024, and 2025. The dashboard also includes dynamic key findings and a filtered dataset preview. The filters have been checked in both dashboards. Part 1 is complete for the current implementation.
 
 ### Part 2 — Design with Precision
 
 **The Editor**
 
-This section will focus on improving chart clarity, readability, and visual accuracy.
+This section focused on improving chart clarity, readability, and visual accuracy.
 
-_Planned topics:_
+**Completed refinements:**
 
-- Maximising the data-ink ratio.
-- Removing unnecessary chart clutter.
-- Using direct labels to improve readability.
-- Applying colour purposefully and considering accessibility.
-- Designing clear, professional presentation slides.
+- Added a clear title to the Power BI report.
+- Used horizontal bar charts for category comparisons and a line chart for monthly trends.
+- Maintained clear chart titles, axis labels, and data labels.
+- Refined Streamlit chart sizing, margins, and typography.
+- Checked interactive filters in both dashboards and restored the full-dataset default view.
+- Reviewed the overall dashboard layout and readability.
+
+Part 2 is complete for the current dashboard implementation. These refinements focus on the dashboards; a separate presentation-slide design was not created.
 
 ### Part 3 — Tell a Data Story
 
 **The Storyteller**
 
-This section will focus on communicating findings and explaining their business significance.
+This section communicates the main findings and explains how they should be interpreted.
 
-_Planned topics:_
+**Key findings:**
 
-- Distinguishing exploratory analysis from explanatory delivery.
-- Writing insight-focused titles.
-- Structuring a narrative using the Situation–Complication–Resolution (SCR) framework.
-- Applying the five-second rule and answering “So what?”
-- Presenting evidence-based recommendations and next steps.
+- **Top product:** Chair has the highest recorded sales at 195,620.11, narrowly ahead of Printer at 195,612.61.
+- **Top payment method:** Credit Card has the highest recorded sales at 263,847.63, followed by Online at 262,424.94.
+- **Monthly trend:** Recorded sales fluctuate throughout the available period from January 2023 to June 2025. The 2025 data covers only January to June, so annual comparisons should use the same months.
+- **Order status:** Recorded sales include cancelled and returned orders as well as other statuses. These values should not automatically be treated as completed revenue or profit.
 
-## Dataset
+**Interpretation:** The dashboards support comparisons of product performance, payment methods, order statuses, and monthly sales patterns. The dataset shows what was recorded but does not establish why sales changed or which products or payment methods are most profitable.
+
+### Dataset
 
 The project uses `dataset/cleaned_dataset.xlsx`, the cleaned dataset prepared during the earlier data analytics projects. It contains 1,200 records and 14 columns covering retail transactions, including order dates, products, quantities, prices, payment methods, and order statuses.
 
@@ -100,10 +104,12 @@ By completing this project, I aim to:
 ## Project Status
 
 - [x] Part 1 — Choose the Right Visual
-- [ ] Part 2 — Design with Precision
-- [ ] Part 3 — Tell a Data Story
+- [x] Part 2 — Design with Precision
+- [x] Part 3 — Tell a Data Story
 
-**Current progress:** The Power BI and Python Streamlit dashboards have been implemented and their interactive filters have been checked. The Power BI report includes four KPI cards, product-sales, order-status, and payment-method comparisons, a monthly recorded sales trend, and interactive filters. The Python Streamlit dashboard includes KPI metrics, product, order-status, and date-range filters, charts for recorded sales by product, monthly recorded sales trends, order status, and payment method, a grouped bar chart comparing monthly recorded sales across the available years, dynamic key findings, and a preview of the filtered dataset. The Streamlit charts have been refined with consistent sizing, margins, and typography. The year-over-year explanation reflects the years present in the filtered data. The dataset covers January 2023 to June 2025, so 2025 includes only the first six months; comparisons should use the same months across years, and months without data should not be interpreted as zero sales. Part 1 is complete for the current implementation. Further design refinement, accessibility checks, presentation-slide design, and the fuller data-storytelling requirements in Parts 2 and 3 remain in progress.
+**Current progress:** The Power BI and Python Streamlit dashboards have been implemented and their interactive filters have been checked. The Power BI report includes four KPI cards, a report title, product-sales, order-status, and payment-method comparisons, a monthly recorded sales trend, and interactive filters. The Python Streamlit dashboard includes KPI metrics, product, order-status, and date-range filters, charts for recorded sales by product, monthly recorded sales trends, order status, and payment method, a grouped bar chart comparing monthly recorded sales across the available years, dynamic key findings, and a preview of the filtered dataset. The Streamlit charts use consistent sizing, margins, and typography.
+
+The full-dataset view shows 1,200 orders, recorded sales of 1,264,761.96, total quantity of 3,535, and average recorded value per order of 1,053.97. The key findings document the leading product and payment method and explain the limitations of the available data. The dataset covers January 2023 to June 2025, so comparisons should use the same months across years. Recorded sales include all order statuses and should not automatically be interpreted as completed revenue or profit.
 
 ## Internship
 
