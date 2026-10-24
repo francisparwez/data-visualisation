@@ -254,9 +254,12 @@ else:
     )
 
     fig.update_layout(
-        xaxis_title="Order Status",
+        xaxis_title="Order Status",  # Change for each chart
         yaxis_title="Recorded Sales",
-        showlegend=False,
+        height=450,
+        margin=dict(l=60, r=30, t=60, b=60),
+        font=dict(size=13),
+        title_font=dict(size=18),
     )
 
     st.plotly_chart(fig, width="stretch")
