@@ -157,12 +157,15 @@ else:
         .sum()
         .sort_values("TotalPrice", ascending=False)
     )
+    
+    top_product = product_sales.iloc[0]["Product"]
+    product_chart_title = f"{top_product} Leads Products in Recorded Sales"
 
     fig = px.bar(
         product_sales,
         x="Product",
         y="TotalPrice",
-        title="Which Products Have the Highest Recorded Sales?",
+        title=product_chart_title,
         labels={
             "Product": "Product",
             "TotalPrice": "Recorded Sales",
@@ -266,12 +269,17 @@ else:
         .sum()
         .sort_values("TotalPrice", ascending=False)
     )
+    
+    top_payment_method = payment_sales.iloc[0]["PaymentMethod"]
+    payment_chart_title = (
+        f"{top_payment_method} Records the Highest Sales Among Payment Methods"
+    )
 
     fig = px.bar(
         payment_sales,
         x="PaymentMethod",
         y="TotalPrice",
-        title="Recorded Sales by Payment Method",
+        title=payment_chart_title,
         labels={
             "PaymentMethod": "Payment Method",
             "TotalPrice": "Recorded Sales",
@@ -389,12 +397,19 @@ else:
         )
         
     st.markdown("**Year-over-Year Sales Comparison**")
-    st.write(
-        "The grouped bar chart compares recorded sales for each month "
-        "across 2023, 2024 and 2025. The dataset covers January to June "
-        "2025 only, so those months should be compared with the same "
-        "months in earlier years. July to December 2025 are not available."
-    )
+
+    if filtered_df["Date"].notna().any():
+        selected_years = sorted(filtered_df["Date"].dropna().dt.year.unique())
+        year_text = ", ".join(str(year) for year in selected_years)
+
+        st.write(
+            f"The grouped bar chart compares recorded monthly sales "
+            f"for the available years: {year_text}. "
+            "Only available data is displayed, so comparisons should "
+            "use the same months across years."
+        )
+    else:
+        st.write("No valid dates are available for a year-over-year comparison.")
 
     st.caption(
         "These findings reflect the current filters and recorded sales "
